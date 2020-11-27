@@ -10,39 +10,39 @@ import com.capgemini.employeepayrollapp.model.EmployeePayrollData;
 
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
+	private List<EmployeePayrollData> empList = new ArrayList<>();
 
 	@Override
 	public List<EmployeePayrollData> getEmployeeData() {
-		List<EmployeePayrollData> empList = new ArrayList<>();
-		EmployeePayrollData empData = new EmployeePayrollData(1, new EmployeePayrollDTO("Yudhajit", 50168.00));
-		empList.add(empData);
 		return empList;
 	}
 
 	@Override
 	public EmployeePayrollData getEmployeePayrollDataById(int empId) {
-		EmployeePayrollData empData = null;
-		empData = new EmployeePayrollData(1, new EmployeePayrollDTO("Yudhajit", 50168.00));
-		return empData;
+		return empList.get(empId - 1);
 	}
 
 	@Override
 	public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO empDto) {
 		EmployeePayrollData empData = null;
-		empData = new EmployeePayrollData(1, empDto);
+		empData = new EmployeePayrollData(empList.size() + 1, empDto);
+		empList.add(empData);
 		return empData;
 	}
 
 	@Override
-	public EmployeePayrollData updateEmployeePayrollData(EmployeePayrollDTO empDto) {
+	public EmployeePayrollData updateEmployeePayrollData(int id, EmployeePayrollDTO empDto) {
 		EmployeePayrollData empData = null;
-		empData = new EmployeePayrollData(1, empDto);
+		empData = this.getEmployeePayrollDataById(id);
+		empData.setName(empDto.name);
+		empData.setSalary(empDto.salary);
+		empList.set(id - 1, empData);
 		return empData;
 	}
 
 	@Override
 	public void deleteEmployeePayrollDataById(int empId) {
-		// TODO Auto-generated method stub
+		empList.remove(empId - 1);
 	}
 
 }
