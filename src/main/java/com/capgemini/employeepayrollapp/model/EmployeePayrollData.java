@@ -1,11 +1,19 @@
 package com.capgemini.employeepayrollapp.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.capgemini.employeepayrollapp.dto.EmployeePayrollDTO;
 
+@Entity
+@Table(name = "EMPLOYEES")
 public class EmployeePayrollData {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int employeeId;
 	private String name;
 	private String profilePic;
@@ -17,6 +25,17 @@ public class EmployeePayrollData {
 
 	public EmployeePayrollData() {
 
+	}
+
+	public EmployeePayrollData(EmployeePayrollDTO employeePayrollDto) {
+		super();
+		this.name = employeePayrollDto.name;
+		this.salary = employeePayrollDto.salary;
+		this.profilePic = employeePayrollDto.profilePic;
+		this.gender = employeePayrollDto.gender;
+		this.department = employeePayrollDto.department;
+		this.note = employeePayrollDto.note;
+		this.startDate = employeePayrollDto.startDate;
 	}
 
 	public EmployeePayrollData(int employeeId, EmployeePayrollDTO employeePayrollDto) {
