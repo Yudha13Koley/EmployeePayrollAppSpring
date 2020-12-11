@@ -14,7 +14,7 @@ import com.capgemini.employeepayrollapp.dto.EmployeePayrollDTO;
 public class EmployeePayrollData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int employeeId;
+	private int id;
 	private String name;
 	private String profilePic;
 	private String gender;
@@ -40,7 +40,7 @@ public class EmployeePayrollData {
 
 	public EmployeePayrollData(int employeeId, EmployeePayrollDTO employeePayrollDto) {
 		super();
-		this.employeeId = employeeId;
+		this.id = employeeId;
 		this.name = employeePayrollDto.name;
 		this.salary = employeePayrollDto.salary;
 		this.profilePic = employeePayrollDto.profilePic;
@@ -50,12 +50,12 @@ public class EmployeePayrollData {
 		this.startDate = employeePayrollDto.startDate;
 	}
 
-	public int getEmployeeId() {
-		return employeeId;
+	public int getId() {
+		return id;
 	}
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setId(int employeeId) {
+		this.id = employeeId;
 	}
 
 	public String getName() {

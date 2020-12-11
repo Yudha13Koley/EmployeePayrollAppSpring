@@ -3,7 +3,6 @@ package com.capgemini.employeepayrollapp.dto;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import com.capgemini.employeepayrollapp.exceptions.ValidationException;
 
 public class EmployeePayrollDTO {
