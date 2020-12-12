@@ -1,0 +1,6 @@
+2020-12-12 15:17:58.868 [INFO] [restartedMain] [c.c.e.EmployeePayrollAppApplication:55] Starting EmployeePayrollAppApplication using Java 14 on DESKTOP-2STMROE with PID 6932 (D:\study\JavaEnterprise\EmployeePayrollApp\target\classes started by YUDHAJIT in D:\study\JavaEnterprise\EmployeePayrollApp)
+2020-12-12 15:17:58.872 [DEBUG] [restartedMain] [c.c.e.EmployeePayrollAppApplication:56] Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-12 15:17:58.872 [INFO] [restartedMain] [c.c.e.EmployeePayrollAppApplication:664] The following profiles are active: prod
+2020-12-12 15:18:00.748 [WARN] [restartedMain] [o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:221] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-12 15:18:02.525 [INFO] [restartedMain] [c.c.e.EmployeePayrollAppApplication:61] Started EmployeePayrollAppApplication in 4.097 seconds (JVM running for 5.062)
+2020-12-12 15:18:02.528 [INFO] [restartedMain] [c.c.e.EmployeePayrollAppApplication:15] Employee Payroll App Started in PROD Environment

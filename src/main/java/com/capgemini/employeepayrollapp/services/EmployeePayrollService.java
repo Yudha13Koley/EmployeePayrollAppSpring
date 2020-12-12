@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.capgemini.employeepayrollapp.dto.EmployeePayrollDTO;
+import com.capgemini.employeepayrollapp.exceptions.ValidationException;
 import com.capgemini.employeepayrollapp.model.EmployeePayrollData;
 import com.capgemini.employeepayrollapp.repository.EmployeePayrollRepository;
 
@@ -19,7 +20,10 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 	}
 
 	@Override
-	public EmployeePayrollData getEmployeePayrollDataById(int empId) {
+	public EmployeePayrollData getEmployeePayrollDataById(int empId) throws ValidationException {
+		if (empRepo.findById(empId).isEmpty()) {
+			throw new ValidationException("Employee Not Found !");
+		}
 		return empRepo.findById(empId).get();
 	}
 
@@ -32,7 +36,7 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 	}
 
 	@Override
-	public EmployeePayrollData updateEmployeePayrollData(int id, EmployeePayrollDTO empDto) {
+	public EmployeePayrollData updateEmployeePayrollData(int id, EmployeePayrollDTO empDto) throws ValidationException {
 		EmployeePayrollData empData = null;
 		empData = this.getEmployeePayrollDataById(id);
 		empData.setName(empDto.name);

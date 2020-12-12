@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.capgemini.employeepayrollapp.dto.ResponseDTO;
+import com.capgemini.employeepayrollapp.exceptions.ValidationException;
 import com.capgemini.employeepayrollapp.model.EmployeePayrollData;
 import com.capgemini.employeepayrollapp.services.IEmployeePayrollService;
 
@@ -41,7 +42,8 @@ public class EmployeePayrollController {
 	}
 
 	@GetMapping("/get/{empId}")
-	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable("empId") int empId) {
+	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable("empId") int empId)
+			throws ValidationException {
 		EmployeePayrollData empData = null;
 		empData = employeePayrollService.getEmployeePayrollDataById(empId);
 		ResponseDTO respDTO = new ResponseDTO("Get Call Success For Id : " + empId, empData);
@@ -58,7 +60,7 @@ public class EmployeePayrollController {
 
 	@PutMapping("/update/{empId}")
 	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,
-			@RequestBody EmployeePayrollDTO employeePayrollDTO) {
+			@RequestBody EmployeePayrollDTO employeePayrollDTO) throws ValidationException {
 		EmployeePayrollData empData = null;
 		empData = employeePayrollService.updateEmployeePayrollData(empId, employeePayrollDTO);
 		ResponseDTO respDTO = new ResponseDTO("Updated Employee Payroll Data Successfully !", empData);
