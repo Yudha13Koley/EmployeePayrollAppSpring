@@ -17,4 +17,6 @@ public interface IEmployeePayrollService {
 	EmployeePayrollData updateEmployeePayrollData(int empId, EmployeePayrollDTO empDto) throws ValidationException;
 
 	void deleteEmployeePayrollDataById(int empId);
+	
+	List<EmployeePayrollData> findEmployeesByDepartment(String department);
 }
