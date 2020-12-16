@@ -1,16 +1,22 @@
 package com.capgemini.employeepayrollapp.model;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import com.capgemini.employeepayrollapp.dto.EmployeePayrollDTO;
 
 @Entity
-@Table(name = "EMPLOYEES")
+@Table(name = "EMPLOYEES_TABLE")
 public class EmployeePayrollData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +24,10 @@ public class EmployeePayrollData {
 	private String name;
 	private String profilePic;
 	private String gender;
-	private String[] department;
+	@ElementCollection
+	@CollectionTable(name = "employee_department_table", joinColumns = @JoinColumn(name = "id"))
+	@Column(name = "department")
+	private List<String> department;
 	private double salary;
 	private String note;
 	private Date startDate;
@@ -82,11 +91,11 @@ public class EmployeePayrollData {
 		this.gender = gender;
 	}
 
-	public String[] getDepartment() {
+	public List<String> getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(String[] department) {
+	public void setDepartment(List<String> department) {
 		this.department = department;
 	}
 

@@ -1,6 +1,7 @@
 package com.capgemini.employeepayrollapp.dto;
 
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.capgemini.employeepayrollapp.exceptions.ValidationException;
@@ -9,12 +10,12 @@ public class EmployeePayrollDTO {
 	public String name;
 	public String profilePic;
 	public String gender;
-	public String[] department;
+	public List<String> department;
 	public double salary;
 	public String note;
 	public Date startDate;
 
-	public EmployeePayrollDTO(String name, String profilePic, String gender, String[] department, double salary,
+	public EmployeePayrollDTO(String name, String profilePic, String gender, List<String> department, double salary,
 			String note, Date startDate) throws ValidationException {
 		super();
 		this.setName(name);
